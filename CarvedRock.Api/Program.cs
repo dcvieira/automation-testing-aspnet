@@ -109,3 +109,7 @@ app.MapControllers().RequireAuthorization();
 app.MapHealthChecks("health").AllowAnonymous();
 
 app.Run();
+
+
+// user for integration tests
+public partial class Program { } 
