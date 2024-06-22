@@ -9,9 +9,10 @@ public static class DataCreator
 {
     public static void InitializeTestData(this LocalContext context, int productCount)
     {
-        var products = ProductFaker.Generate(productCount);
+         var products = ProductFaker.Generate(productCount);
 
         // could include any other entities or logic here to customize the data
+     
 
         context.Products.AddRange(products);
         context.SaveChanges();

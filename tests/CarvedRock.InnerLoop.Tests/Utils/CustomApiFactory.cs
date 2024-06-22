@@ -28,9 +28,14 @@ namespace CarvedRock.InnerLoop.Tests.Utils
                 services.Remove(ctx!);
 
                 // SQLite --------------------------------
-                services.AddDbContext<LocalContext>(opts =>
-                    opts.UseSqlite($"Data Source={SharedFixture.DatabaseName}")
-                        .UseQueryTrackingBehavior(QueryTrackingBehavior.NoTracking));
+                //services.AddDbContext<LocalContext>(opts =>
+                //    opts.UseSqlite($"Data Source={SharedFixture.DatabaseName}")
+                //        .UseQueryTrackingBehavior(QueryTrackingBehavior.NoTracking));
+
+                // Postgres -----------------------------
+                services.AddDbContext<LocalContext>(options => options
+                    .UseNpgsql(SharedFixture.PostgresConnectionString)
+                    .UseQueryTrackingBehavior(QueryTrackingBehavior.NoTracking));
             });
         }
     }

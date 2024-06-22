@@ -2,36 +2,57 @@
 using CarvedRock.Data;
 using CarvedRock.Data.Entities;
 using Microsoft.EntityFrameworkCore;
+using Testcontainers.PostgreSql;
 
 namespace CarvedRock.InnerLoop.Tests.Utils;
 public class SharedFixture : IAsyncLifetime
 {
     public const string DatabaseName = "InMemTestDb;Mode=Memory;Cache=Shared;";
+
+    public string PostgresConnectionString => _dbContainer.GetConnectionString();
     public List<Product> OriginalProducts { get; private set; } = new();
 
     private LocalContext? _dbContext;
 
+    private readonly PostgreSqlContainer _dbContainer =
+       new PostgreSqlBuilder()
+       .WithDatabase("carvedrock")
+       .WithUsername("carvedrock")
+       .WithPassword("test")
+       .Build();
+
 
     public async Task InitializeAsync()
     {
+        //Postgres --------------------------------
+            await _dbContainer.StartAsync();
+
+        var optionsBuilder = new DbContextOptionsBuilder<LocalContext>()
+            .UseNpgsql(PostgresConnectionString);
+        
+        _dbContext = new LocalContext(optionsBuilder.Options);
+
+        // --------------------------------------
+
         //SQLite --------------------------------
-        var options = new DbContextOptionsBuilder<LocalContext>()
-            .UseSqlite($"Data Source={DatabaseName}")
-            .UseQueryTrackingBehavior(QueryTrackingBehavior.NoTracking)
-            .Options;
+        //var options = new DbContextOptionsBuilder<LocalContext>()
+        //    .UseSqlite($"Data Source={DatabaseName}")
+        //    .UseQueryTrackingBehavior(QueryTrackingBehavior.NoTracking)
+        //    .Options;
 
-        _dbContext = new LocalContext(options);
+        //_dbContext = new LocalContext(options);
 
-        await _dbContext.Database.EnsureDeletedAsync();
-        await _dbContext.Database.EnsureCreatedAsync();
-        await _dbContext.Database.OpenConnectionAsync();
+        //await _dbContext.Database.EnsureDeletedAsync();
+        //await _dbContext.Database.EnsureCreatedAsync();
+        //await _dbContext.Database.OpenConnectionAsync();
+        //---------------------------------------
 
         await _dbContext.Database.MigrateAsync();
-        _dbContext.InitializeTestData(20);
+        _dbContext.InitializeTestData(15);
 
         OriginalProducts = await _dbContext.Products.ToListAsync();
 
-        //---------------------------------------
+        
     }
 
     public async Task DisposeAsync()
