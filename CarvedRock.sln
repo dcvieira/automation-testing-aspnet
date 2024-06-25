@@ -14,14 +14,20 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{52B78FD2-1E54-4EE1-897C-F3BD6F4945A5}"
 	ProjectSection(SolutionItems) = preProject
 		CarvedRock.slnLaunch = CarvedRock.slnLaunch
+		local-coverage.ps1 = local-coverage.ps1
 		readme.md = readme.md
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CarvedRock.Core", "CarvedRock.Core\CarvedRock.Core.csproj", "{B93304E2-F170-47D6-98AC-6FEF0E5F99E0}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{B582E434-9697-4755-8958-FA566D21681F}"
+	ProjectSection(SolutionItems) = preProject
+		carvedrock.runsettings = carvedrock.runsettings
+	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CarvedRock.InnerLoop.Tests", "tests\CarvedRock.InnerLoop.Tests\CarvedRock.InnerLoop.Tests.csproj", "{A09EC056-5A3F-464E-8AB0-23531560786E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarvedRock.InnerLoop.WebApp.Tests", "tests\CarvedRock.InnerLoop.WebApp.Tests\CarvedRock.InnerLoop.WebApp.Tests.csproj", "{3F32D185-0889-4BBE-9A42-4AE07F21325A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -53,12 +59,17 @@ Global
 		{A09EC056-5A3F-464E-8AB0-23531560786E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A09EC056-5A3F-464E-8AB0-23531560786E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A09EC056-5A3F-464E-8AB0-23531560786E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3F32D185-0889-4BBE-9A42-4AE07F21325A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3F32D185-0889-4BBE-9A42-4AE07F21325A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3F32D185-0889-4BBE-9A42-4AE07F21325A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3F32D185-0889-4BBE-9A42-4AE07F21325A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{A09EC056-5A3F-464E-8AB0-23531560786E} = {B582E434-9697-4755-8958-FA566D21681F}
+		{3F32D185-0889-4BBE-9A42-4AE07F21325A} = {B582E434-9697-4755-8958-FA566D21681F}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {FAE1B7C4-22B1-4A77-B281-DF647AE2900D}
