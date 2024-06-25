@@ -21,7 +21,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CarvedRock.Core", "CarvedRo
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{B582E434-9697-4755-8958-FA566D21681F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarvedRock.InnerLoop.Tests", "tests\CarvedRock.InnerLoop.Tests\CarvedRock.InnerLoop.Tests.csproj", "{A09EC056-5A3F-464E-8AB0-23531560786E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CarvedRock.InnerLoop.Tests", "tests\CarvedRock.InnerLoop.Tests\CarvedRock.InnerLoop.Tests.csproj", "{A09EC056-5A3F-464E-8AB0-23531560786E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
