@@ -15,6 +15,14 @@ public class CustomWebAppFactory(SharedFixture fixture) : WebApplicationFactory<
 
         builder.ConfigureServices(ProvideSubstituteForProductService);
 
+        builder.ConfigureAppConfiguration((_, configBuilder) =>
+        {
+            configBuilder.AddInMemoryCollection(new Dictionary<string, string>
+            {
+                ["CarvedRock:EmailPort"] = SharedFixture.EmailPort.ToString(),
+            }!);
+        });
+
 
         builder.ConfigureTestServices(services => services
               .AddAuthentication(TestAuthHandler.SchemeName)
