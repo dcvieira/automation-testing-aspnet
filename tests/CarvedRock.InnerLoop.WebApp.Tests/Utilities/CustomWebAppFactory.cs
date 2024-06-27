@@ -20,6 +20,7 @@ public class CustomWebAppFactory(SharedFixture fixture) : WebApplicationFactory<
             configBuilder.AddInMemoryCollection(new Dictionary<string, string>
             {
                 ["CarvedRock:EmailPort"] = SharedFixture.EmailPort.ToString(),
+                ["CarvedRock:ApiBaseUrl"] = SharedFixture.ProductServiceUrl
             }!);
         });
 
